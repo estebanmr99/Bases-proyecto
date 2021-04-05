@@ -1,0 +1,55 @@
+<section>
+  <div class="lesson-viewer-wrapper">
+    <!--suppress ALL -->
+    <div class="container">
+      <form novalidate (ngSubmit)="onSubmit()" #f="ngForm">
+
+        <fieldset ngModelGroup="user">
+          <div class="form-group" [ngClass]="{
+            'has-danger': carnet.invalid && (carnet.dirty || carnet.touched),
+            'has-success': carnet.valid && (carnet.dirty || carnet.touched)}">
+            <label>Carnet</label>
+            <input type="text" class="form-control" name="carnet" [(ngModel)]="model.carnet" required #carnet="ngModel">
+            <div class="form-control-feedback" *ngIf="carnet.errors && (carnet.dirty || carnet.touched)">
+              <p *ngIf="carnet.errors.required">Carnet es requerido</p>
+            </div>
+          </div>
+
+          <div class="form-group" [ngClass]="{
+            'has-danger': nombre.invalid && (nombre.dirty || nombre.touched),
+            'has-success': nombre.valid && (nombre.dirty || nombre.touched)}">
+            <label>Nombre</label>
+            <input type="text" class="form-control" name="nombre" [(ngModel)]="model.nombre" required #nombre="ngModel">
+            <div class="form-control-feedback" *ngIf="nombre.errors && (nombre.dirty || nombre.touched)">
+              <p *ngIf="nombre.errors.required">Nombre es requerido</p>
+            </div>
+          </div>
+
+          <div class="form-group" [ngClass]="{
+              'has-danger': beca.invalid && (beca.dirty || beca.touched),
+              'has-success': beca.valid && (beca.dirty || beca.touched)}">
+            <label>Beca</label>
+            <input type="text" class="form-control" name="beca" [(ngModel)]="model.beca" required #beca="ngModel">
+            <div class="form-control-feedback" *ngIf="beca.errors && (beca.dirty || beca.touched)">
+              <p *ngIf="beca.errors.required">Beca es requerido</p>
+            </div>
+          </div>
+
+          <div class="form-group" [ngClass]="{
+                'has-danger': precio.invalid && (precio.dirty || precio.touched),
+                'has-success': precio.valid && (precio.dirty || precio.touched)}">
+            <label>Precio hora</label>
+            <input type="text" class="form-control" name="precio" [(ngModel)]="model.precio" required #precio="ngModel">
+            <div class="form-control-feedback" *ngIf="precio.errors && (precio.dirty || precio.touched)">
+              <p *ngIf="precio.errors.required">Precio hora es requerido</p>
+            </div>
+          </div>
+        </fieldset>
+
+        <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Enviar
+        </button>
+        <!-- <pre>{{f.value | json}}</pre> -->
+      </form>
+    </div>
+  </div>
+</section>
